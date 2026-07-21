@@ -167,7 +167,7 @@ ${headerWaktu}
 *☎️ KONSULTASI SYARIAH*
 
 _🎙️ Bersama:_
-*${item.ustadz}*
+*${item.ustadz} حَفِظَهُ اللهُ*
 
 _Silakan kirimkan pertanyaan via WhatsApp ke:_
 *+62 812-5952-1312*
@@ -188,7 +188,7 @@ _📚 Tema:_
 *${temaFormatted}*
 
 _🎙️ Bersama:_
-*${item.ustadz}*
+*${item.ustadz} حَفِظَهُ اللهُ*
 
 ${footer}`;
 }
@@ -209,7 +209,7 @@ _📚 Tema:_
 *${temaFormatted}*
 
 _🎙️ Bersama:_
-*${narsum}*
+*${narsum} حَفِظَهُ اللهُ*
 
 ${footer}`;
   }
@@ -228,7 +228,7 @@ _📚 Pembahasan Kitab:_
 *${item.kitab || '-'}${item.pertemuanKe ? ` (Pertemuan Ke-${item.pertemuanKe})` : ''}*
 
 _🎙️ Bersama:_
-*${item.ustadz}*
+*${item.ustadz} حَفِظَهُ اللهُ*
 
 ${footer}`;
   }
@@ -246,7 +246,7 @@ _📚 Pembahasan Kitab:_
 *${item.kitab || '-'}${item.pertemuanKe ? ` (Pertemuan Ke-${item.pertemuanKe})` : ''}*
 
 _🎙️ Bersama:_
-*${item.ustadz}*
+*${item.ustadz} حَفِظَهُ اللهُ*
 
 ${footer}`;
 }
