@@ -12,7 +12,7 @@ import {
   generateTematikTitle, 
   generateCaptionText, 
   toTitleCase, 
-  stripMarkdown // <- Tambahkan ini
+  stripMarkdown
 } from '@/utils/generator';
 
 type PreviewTab = 'studio' | 'masjid' | 'konsultasi' | 'program_anak' | 'tematik';
@@ -36,7 +36,7 @@ export default function AppDashboard() {
     facebookUrl: '',
     isTematik: false,
     narsumTematik: '',
-    kategoriTematik: 'Tabligh Akbar',
+    kategoriTematik: 'Kegiatan apa?',
     kategori: 'studio',
     createdAt: Date.now(),
   });
@@ -117,13 +117,13 @@ export default function AppDashboard() {
   return (
     <div className="min-h-screen bg-background text-foreground transition-colors duration-300 pb-12">
       
-      {/* HEADER UTAMA DENGAN TOMBOL THEME TOGGLE */}
+      {/* HEADER UTAMA */}
       <header className="bg-alfurqon-dark text-white p-4 shadow-md border-b-2 border-alfurqon-green">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           <div className="flex items-center gap-3">
             <Sparkles className="text-alfurqon-gold w-6 h-6" />
             <div>
-              <h1 className="font-bold text-lg leading-tight">Al-Furqon TV — Broadcast Generate 2.0</h1>
+              <h1 className="font-bold text-lg leading-tight">Al Furqon TV | Broadcast Generate 2.0</h1>
               <p className="text-xs text-emerald-200/80">Generator Schedule & Caption Live Streaming</p>
             </div>
           </div>
@@ -294,7 +294,7 @@ export default function AppDashboard() {
             </div>
 
             <div className="text-xs">
-              <label className="block font-semibold mb-1">Ustadz / Pemateri Standard</label>
+              <label className="block font-semibold mb-1">Ustadz / Pemateri Harian</label>
               <input 
                 type="text" 
                 value={formData.ustadz} 
@@ -329,7 +329,7 @@ export default function AppDashboard() {
 
           <div className="bg-alfurqon-gold/10 p-4 rounded-xl border border-alfurqon-gold/30 space-y-3 text-xs">
             <h3 className="font-bold text-alfurqon-gold uppercase tracking-wider">
-              Khusus Tematik / Tabligh Akbar / Badal
+              Khusus Tematik / Tabligh Akbar / Kajian Spesial
             </h3>
             <div className="space-y-2">
               <div>
@@ -341,7 +341,7 @@ export default function AppDashboard() {
                     ...formData, 
                     narsumTematik: toTitleCase(e.target.value) // <- Diubah ke toTitleCase
                   })}
-                  placeholder="misal: ustadz abdullah zaen, m.a."
+                  placeholder="misal: Ustadz Ahmad Mahmud M.A."
                   className="w-full p-2 bg-card border border-alfurqon-gold/40 rounded font-semibold outline-none focus:ring-2 focus:ring-alfurqon-gold" 
                 />
               </div>
@@ -368,19 +368,19 @@ export default function AppDashboard() {
           {/* PREVIEW TITLE BOX */}
           <div className="bg-card p-4 rounded-xl border border-card-border shadow-sm space-y-3">
             <h3 className="text-xs font-bold uppercase tracking-wider border-b border-card-border pb-1 opacity-80">
-              Preview Title YT & FB
+              Preview Title Youtube & Facebook (Judul Siaran Langsung) 
             </h3>
 
             {/* Title Standard */}
             <div className="space-y-1">
               <div className="flex justify-between items-center text-[11px]">
-                <span className="font-bold text-alfurqon-green dark:text-alfurqon-lightgreen">📌 Title Standard:</span>
+                <span className="font-bold text-alfurqon-green dark:text-alfurqon-lightgreen">📌 Title Standard (Harian):</span>
                 <button
                   onClick={() => handleCopy(generateStandardTitle(formData), 'title_std')}
                   className="px-2 py-0.5 bg-alfurqon-green hover:bg-alfurqon-lightgreen text-white rounded text-[10px] font-semibold flex items-center gap-1 transition cursor-pointer"
                 >
                   {copiedKey === 'title_std' ? <Check className="w-3 h-3" /> : <Video className="w-3 h-3" />}
-                  Salin Standard
+                  Salin Judul Standard
                 </button>
               </div>
               <div className="p-2.5 bg-slate-900 text-alfurqon-lightgreen font-mono text-xs rounded-lg break-all border border-slate-800">
@@ -391,13 +391,13 @@ export default function AppDashboard() {
             {/* Title Tematik */}
             <div className="space-y-1 pt-1">
               <div className="flex justify-between items-center text-[11px]">
-                <span className="font-bold text-alfurqon-gold">✨ Title Tematik / Tabligh Akbar:</span>
+                <span className="font-bold text-alfurqon-gold">✨ Title Tematik / Tabligh Akbar / Kajian Spesial:</span>
                 <button
                   onClick={() => handleCopy(generateTematikTitle(formData), 'title_tematik')}
                   className="px-2 py-0.5 bg-alfurqon-gold hover:bg-amber-600 text-white rounded text-[10px] font-semibold flex items-center gap-1 transition cursor-pointer"
                 >
                   {copiedKey === 'title_tematik' ? <Check className="w-3 h-3" /> : <Video className="w-3 h-3" />}
-                  Salin Tematik
+                  Salin Judul Tematik
                 </button>
               </div>
               <div className="p-2.5 bg-slate-900 text-alfurqon-gold font-mono text-xs rounded-lg break-all border border-slate-800">
@@ -453,7 +453,7 @@ export default function AppDashboard() {
                   activeTab === 'tematik' ? 'bg-alfurqon-gold text-slate-900 shadow font-bold' : 'text-slate-400 hover:bg-slate-800'
                 }`}
               >
-                5. Tematik / Tabligh Akbar
+                5. Tematik / Tabligh Akbar / Kajian Spesial
               </button>
             </div>
 

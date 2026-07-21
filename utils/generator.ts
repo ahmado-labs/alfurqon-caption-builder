@@ -76,32 +76,30 @@ ${ytUrl}
 🔴 Live Facebook:
 ${fbUrl}
 
-📺 YouTV Web Streaming:
+▶ Live Streaming YouTV
 https://youtv.id/
 
-📲 Download aplikasi YouTV di Play Store:
-https://play.google.com/store/apps/details?id=com.insantv.player&hl=en
+📲 Download Aplikasi MeGo (intech apps)
+https://play.google.com/store/apps/details?id=one.mego&hl=id
 
-📷 Instagram:
+📷 Instagram Resmi
 https://www.instagram.com/alfurqontvofficial
 
-📻 Radio Suara Al-Furqon 102.3 FM
-(Untuk wilayah Kecamatan Sidayu, Gresik, dan sekitarnya)
+📻 Radio Suara Al Furqon 102.3 FM
+(Sidayu, Gresik, dan sekitarnya)
 
-📱 Ingin bertanya?
-Silakan kirimkan pertanyaan via WhatsApp ke: +62 812-5952-1312
+❓ Ingin bertanya? hubungi:
+📱 WhatsApp: +62 812-5952-1312
 
-🌐 Website Resmi:
-https://ziswaf.alfurqongresik.com/program
-
-🏧 Ta'awun Dakwah Bersama Al Furqon TV:
-Bank Syariah Indonesia
-No. Rekening: 224-224-2206
+🤝 Dukung Syiar Dakwah Al Furqon TV
+🏦 BSI 224-224-2206
 a.n. TV AL FURQON
-Info dan Konfirmasi: WhatsApp/SMS 0852-8903-1400
 
-📨 Mari sebarkan informasi ini!
-Semoga menjadi bagian dari amal jariyah Anda.
+Konfirmasi:
+📱 0852-8903-1400
+
+📨 Silakan bagikan informasi ini. Semoga Allah menjadikannya sebagai amal jariyah.
+
 ✨ بارك الله فيكم`;
 
 // Live Title Standard
@@ -139,7 +137,7 @@ export function generateTematikTitle(item: ScheduleItem): string {
 
   const judulUtama = temaInput || 'KAJIAN TEMATIK';
 
-  return `[LIVE] ${kategori}: ${judulUtama} | ${narsum}`;
+  return `[LIVE]  ${judulUtama} | ${narsum}`; // tambahkan ${kategori}: kalau suatu saatnya ingin menampilkan kategori tematik di judul, tapi untuk sekarang kita sembunyikan dulu
 }
 
 // Text Caption Generator
@@ -161,8 +159,8 @@ export function generateCaptionText(
 
   // 1. KONSULTASI
   if (mode === 'konsultasi') {
-    return `📡 (LIVE) Studio Al-Furqon TV
-Ponpes Al-Furqon Al-Islami, Srowo, Sidayu, Gresik - Jawa Timur
+    return `📡 (LIVE) Studio Al Furqon TV
+Ma'had Al Furqon Al Islami, Srowo, Sidayu, Gresik - Jawa Timur
 
 ${headerWaktu}
 
@@ -179,8 +177,8 @@ ${footer}`;
 
   // 2. PROGRAM ANAK
 if (mode === 'program_anak') {
-  return `📡 (LIVE) Studio Al-Furqon TV
-Ponpes Al-Furqon Al-Islami, Srowo, Sidayu, Gresik - Jawa Timur
+  return `📡 (LIVE) Studio Al Furqon TV
+Ma'had Al Furqon Al Islami, Srowo, Sidayu, Gresik - Jawa Timur
 
 ${headerWaktu}
 
@@ -200,8 +198,8 @@ ${footer}`;
     const narsum = item.narsumTematik || item.ustadz;
     const kategori = item.kategoriTematik || 'Tabligh Akbar';
 
-    return `📡 (LIVE) Masjid Jami' Al-Furqon
-Ponpes Al-Furqon Al-Islami, Srowo, Sidayu, Gresik - Jawa Timur
+    return `📡 (LIVE) Masjid Jami' Al Furqon
+Ma'had Al Furqon Al Islami, Srowo, Sidayu, Gresik - Jawa Timur
 
 ${headerWaktu}
 
@@ -218,8 +216,8 @@ ${footer}`;
 
   // 4. MASJID (Reguler)
   if (mode === 'masjid') {
-    return `📡 (LIVE) Masjid Jami' Al-Furqon
-Ponpes Al-Furqon Al-Islami, Srowo, Sidayu, Gresik - Jawa Timur
+    return `📡 (LIVE) Masjid Jami' Al Furqon
+Ma'had Al Furqon Al Islami, Srowo, Sidayu, Gresik - Jawa Timur
 
 ${headerWaktu}
 
@@ -236,8 +234,8 @@ ${footer}`;
   }
 
   // 5. STUDIO (Reguler / Standard)
-  return `📡 (LIVE) Studio Al-Furqon TV
-Ponpes Al-Furqon Al-Islami, Srowo, Sidayu, Gresik - Jawa Timur
+  return `📡 (LIVE) Studio Al Furqon TV
+Ma'had Al Furqon Al Islami, Srowo, Sidayu, Gresik - Jawa Timur
 
 ${headerWaktu}
 

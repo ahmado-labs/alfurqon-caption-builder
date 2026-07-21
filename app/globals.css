@@ -47,8 +47,8 @@
   --color-alfurqon-gold: var(--brand-gold);
   --color-alfurqon-orange: var(--brand-orange);
 
-  --font-sans: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
-  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
+--font-sans: var(--font-jakarta), system-ui, -apple-system, sans-serif;
+  --font-mono: var(--font-jakarta), ui-monospace, SFMono-Regular, monospace;
 }
 
 /* 4. Base Styles & Smooth Transition */

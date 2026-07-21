@@ -5,7 +5,7 @@ export type KategoriKajian = 'studio' | 'masjid' | 'tabligh_akbar' | 'konsultasi
 export interface ScheduleItem {
   id: string;
   hari: string;            // Contoh: "Selasa"
-  tanggalMasehi: string;   // Contoh: "21/07/2026"
+  tanggalMasehi: string;   // Contoh: "21 Juli 2026"
   tanggalHijri: string;    // Contoh: "7 Safar 1448 H"
   jam: string;             // Contoh: "07.30"
   pertemuanKe?: string;    // Contoh: "8"

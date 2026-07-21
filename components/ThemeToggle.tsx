@@ -24,11 +24,11 @@ export function ThemeToggle() {
     >
       {theme === 'dark' ? (
         <>
-          <span>☀️</span> Mode Terang
+          <span>☀️</span> Ubah ke Mode Terang
         </>
       ) : (
         <>
-          <span>🌙</span> Mode Gelap
+          <span>🌙</span> Ubah ke Mode Gelap
         </>
       )}
     </button>

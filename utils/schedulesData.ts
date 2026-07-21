@@ -35,7 +35,7 @@ export const MASTER_SCHEDULES: FixedSchedule[] = [
   { hari: 'Selasa', jam: '05.00', kitab: 'TIPU DAYA IBLIS', ustadz: 'Ustadz Yusuf Rustam, Lc., M.A.' },
   { hari: 'Selasa', jam: '07.30', kitab: 'AT-TIBYAN: SYARAH AKHLAK PENGHAFAL AL-QUR\'AN', ustadz: 'Ustadz Ibrohim Ghozi Lc.' },
   { hari: 'Selasa', jam: '13.00', kitab: 'HIDUP BERKAH DENGAN ETIKA ISLAM', ustadz: 'Ustadz Aunush Shofi' },
-  { hari: 'Selasa', jam: '15.45', kitab: 'TAFSIR AYAT-Ayat HUKUM', ustadz: 'Ustadz Hafidz Al-Mushtofa, Lc.' },
+  { hari: 'Selasa', jam: '15.45', kitab: 'TAFSIR AYAT-AYAT HUKUM', ustadz: 'Ustadz Hafidz Al-Mushtofa, Lc.' },
   { hari: 'Selasa', jam: '18.00', kitab: 'MAA\'LIM AT TAUHID', ustadz: 'Ustadz Fatih Mufarrikh, Lc., M.Pd.' },
   { hari: 'Selasa', jam: '18.00', kitab: 'MENELADANI AKHLAK NABI', ustadz: 'Ustadz Hafidz Al-Mushtofa, Lc.' },
   { hari: 'Selasa', jam: '20.00', kitab: 'Konsultasi Syari\'ah', ustadz: 'Ustadz Ahmad Sabiq, Lc.', kategori: 'konsultasi' },
