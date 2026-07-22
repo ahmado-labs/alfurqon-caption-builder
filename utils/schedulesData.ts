@@ -25,18 +25,18 @@ export const MASTER_SCHEDULES: FixedSchedule[] = [
 
   // SENIN
   { hari: 'Senin', jam: '05.00', kitab: 'KEMULIAAN ADAB DAN AKHLAK', ustadz: 'Ustadz Taufiqurrahman, Lc.' },
-  { hari: 'Senin', jam: '06.00', kitab: 'FIQH SIRAH NABI', ustadz: 'Ustadz Sabilul Muhtadin, Lc., M.H.I.' },
+  { hari: 'Senin', jam: '06.00', kitab: 'FIQH SIRAH NABI ﷻ', ustadz: 'Ustadz Sabilul Muhtadin, Lc., M.H.I.' },
   { hari: 'Senin', jam: '13.00', kitab: 'TARGHIB WA TARHIB', ustadz: 'Ustadz Anwar Samuri, Lc. M.A.' },
   { hari: 'Senin', jam: '15.45', kitab: 'PERJALANAN MANUSIA-MANUSIA TERBAIK', ustadz: 'Ustadz Muamar Sulaiman' },
   { hari: 'Senin', jam: '18.00', kitab: 'PRAHARA DOSA BESAR', ustadz: 'Ustadz Rifaq Asyfiya\', Lc.' },
-  { hari: 'Senin', jam: '20.00', kitab: 'BAGAIMANA ENKAU MEMPERBAIKI HATI', ustadz: 'Ustadz Ahmad Zamroni' },
+  { hari: 'Senin', jam: '20.00', kitab: 'BAGAIMANA ENGKAU MEMPERBAIKI HATI', ustadz: 'Ustadz Ahmad Zamroni' },
 
   // SELASA
   { hari: 'Selasa', jam: '05.00', kitab: 'TIPU DAYA IBLIS', ustadz: 'Ustadz Yusuf Rustam, Lc., M.A.' },
   { hari: 'Selasa', jam: '07.30', kitab: 'AT-TIBYAN: SYARAH AKHLAK PENGHAFAL AL-QUR\'AN', ustadz: 'Ustadz Ibrohim Ghozi Lc.' },
   { hari: 'Selasa', jam: '13.00', kitab: 'HIDUP BERKAH DENGAN ETIKA ISLAM', ustadz: 'Ustadz Aunush Shofi' },
   { hari: 'Selasa', jam: '15.45', kitab: 'TAFSIR AYAT-AYAT HUKUM', ustadz: 'Ustadz Hafidz Al-Mushtofa, Lc.' },
-  { hari: 'Selasa', jam: '18.00', kitab: 'MAA\'LIM AT TAUHID', ustadz: 'Ustadz Fatih Mufarrikh, Lc., M.Pd.' },
+  { hari: 'Selasa', jam: '18.00', kitab: 'MA\'ALIM AT TAUHID', ustadz: 'Ustadz Fatih Mufarrikh, Lc., M.Pd.' },
   { hari: 'Selasa', jam: '18.00', kitab: 'MENELADANI AKHLAK NABI', ustadz: 'Ustadz Hafidz Al-Mushtofa, Lc.' },
   { hari: 'Selasa', jam: '20.00', kitab: 'Konsultasi Syari\'ah', ustadz: 'Ustadz Ahmad Sabiq, Lc.', kategori: 'konsultasi' },
 
@@ -57,6 +57,6 @@ export const MASTER_SCHEDULES: FixedSchedule[] = [
 
   // JUM'AT
   { hari: 'Jum\'at', jam: '05.00', kitab: 'TAMAN BAGI ORANG-ORANG SHOLEH', ustadz: 'Ustadz Shofwu Mi\'wan, Lc.' },
-  { hari: 'Jum\'at', jam: '18.00', kitab: 'MUKHTASOR TADZKIRUTUS SAMI\' WAL MUTAKALLIM', ustadz: 'Ustadz Ahmad Sabiq, Lc.' },
+  { hari: 'Jum\'at', jam: '18.00', kitab: 'MUKHTASOR TADZKIRATUS SAMI\' WAL MUTAKALLIM', ustadz: 'Ustadz Ahmad Sabiq, Lc.' },
   { hari: 'Jum\'at', jam: '20.00', kitab: 'TAFSIR AL-QUR\'AN (TAFSIR JALALAIN)', ustadz: 'Ustadz Ahmad Sabiq, Lc.' },
 ];
