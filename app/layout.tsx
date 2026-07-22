@@ -9,7 +9,7 @@ const fontSans = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: 'Broadcast Generate 2.0 — Al Furqon TV',
+  title: 'Broadcast Generate Gen 2 — Al Furqon TV',
   description: 'Generator Caption & Title Live Streaming Al Furqon TV',
 };
 
