@@ -102,7 +102,7 @@ export default function AppDashboard() {
     applyDateChange(today, hijriOffset);
   };
 
-  // HANDLER PILIH JADWAL KAJIAN (DENGAN INTEGRASI LOCALSTORAGE)
+  // HANDLER PILIH JADWAL KAJIAN (AMBIL DATA TERAKHIR TANPA AUTO +1)
   const handleSelectSchedule = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const index = parseInt(e.target.value);
     if (isNaN(index)) return;
@@ -115,16 +115,8 @@ export default function AppDashboard() {
       const scheduleKey = `pertemuan_${selected.kitab.replace(/\s+/g, '_')}`;
       setCurrentScheduleKey(scheduleKey);
 
-      // Cek apakah ada angka pertemuan terakhir yang tersimpan
-      const savedPertemuan = localStorage.getItem(scheduleKey);
-      
-      let nextPertemuan = '1';
-      if (savedPertemuan) {
-        const lastNum = parseInt(savedPertemuan);
-        if (!isNaN(lastNum)) {
-          nextPertemuan = (lastNum + 1).toString(); // Bertambah +1 secara otomatis
-        }
-      }
+      // Ambil nilai pertemuan terakhir dari localStorage (jika belum ada, default ke "1")
+      const savedPertemuan = localStorage.getItem(scheduleKey) || '1';
 
       setFormData(prev => ({
         ...prev,
@@ -132,12 +124,9 @@ export default function AppDashboard() {
         kitab: selected.kitab,
         ustadz: selected.ustadz,
         tema: selected.kitab,
-        pertemuanKe: nextPertemuan,
+        pertemuanKe: savedPertemuan,
         kategori: category
       }));
-
-      // Simpan angka pertemuan baru ke localStorage
-      localStorage.setItem(scheduleKey, nextPertemuan);
 
       if (category === 'konsultasi') setActiveTab('konsultasi');
       else if (category === 'program_anak') setActiveTab('program_anak');
@@ -145,14 +134,21 @@ export default function AppDashboard() {
     }
   };
 
-  // Handler jika nomor "Pertemuan Ke" diubah manual oleh operator
+  // Handler saat nomor "Pertemuan Ke" diubah (ketik manual atau tombol +1 / -1)
   const handlePertemuanChange = (value: string) => {
     setFormData(prev => ({ ...prev, pertemuanKe: value }));
     
-    // Update nilai di localStorage agar angka acuan diperbarui
-    if (currentScheduleKey && value) {
+    // Langsung update nilai ke localStorage
+    if (currentScheduleKey && value !== '') {
       localStorage.setItem(currentScheduleKey, value);
     }
+  };
+
+  // Handler Tombol Pintas Tambah / Kurang Pertemuan
+  const handleIncrementPertemuan = (delta: number) => {
+    const currentNum = parseInt(formData.pertemuanKe || '0');
+    const newNum = Math.max(1, (isNaN(currentNum) ? 0 : currentNum) + delta).toString();
+    handlePertemuanChange(newNum);
   };
 
   const handleCopy = (text: string, key: string) => {
@@ -189,7 +185,7 @@ export default function AppDashboard() {
           <div className="flex items-center gap-3">
             <Sparkles className="text-alfurqon-gold w-6 h-6" />
             <div>
-              <h1 className="font-bold text-lg leading-tight">Al Furqon TV | Broadcast Generator 2.2</h1>
+              <h1 className="font-bold text-lg leading-tight">Al Furqon TV | Broadcast Generator 2.1</h1>
               <p className="text-xs text-emerald-200/80">Generator Schedule & Caption Live Streaming</p>
             </div>
           </div>
@@ -336,14 +332,36 @@ export default function AppDashboard() {
                   className="w-full p-2 bg-background border border-card-border rounded font-medium focus:ring-2 focus:ring-alfurqon-green outline-none" 
                 />
               </div>
+
+              {/* INPUT PERTEMUAN KE + TOMBOL PINTS (+1 / -1) */}
               <div>
-                <label className="block font-semibold mb-1 text-alfurqon-green dark:text-alfurqon-lightgreen">Pertemuan Ke (CEK LAGI!)</label>
-                <input 
-                  type="text" 
-                  value={formData.pertemuanKe || ''} 
-                  onChange={(e) => handlePertemuanChange(e.target.value)}
-                  className="w-full p-2 bg-background border border-alfurqon-green/50 rounded text-center font-bold text-alfurqon-green dark:text-alfurqon-lightgreen focus:ring-2 focus:ring-alfurqon-green outline-none" 
-                />
+                <label className="block font-semibold mb-1 text-alfurqon-green dark:text-alfurqon-lightgreen">
+                  Pertemuan Ke
+                </label>
+                <div className="flex items-center border border-alfurqon-green/50 rounded overflow-hidden bg-background">
+                  <button 
+                    type="button"
+                    onClick={() => handleIncrementPertemuan(-1)}
+                    className="px-2 py-2 bg-card-border/50 hover:bg-alfurqon-green hover:text-white transition font-bold text-xs cursor-pointer"
+                    title="Kurangi pertemuan (-1)"
+                  >
+                    <Minus className="w-3 h-3" />
+                  </button>
+                  <input 
+                    type="text" 
+                    value={formData.pertemuanKe || ''} 
+                    onChange={(e) => handlePertemuanChange(e.target.value)}
+                    className="w-full p-2 text-center font-bold text-alfurqon-green dark:text-alfurqon-lightgreen outline-none bg-transparent" 
+                  />
+                  <button 
+                    type="button"
+                    onClick={() => handleIncrementPertemuan(1)}
+                    className="px-2 py-2 bg-alfurqon-green hover:bg-alfurqon-lightgreen text-white transition font-bold text-xs cursor-pointer"
+                    title="Lanjut pertemuan berikutnya (+1)"
+                  >
+                    <Plus className="w-3 h-3" />
+                  </button>
+                </div>
               </div>
             </div>
 
