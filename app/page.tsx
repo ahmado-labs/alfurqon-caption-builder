@@ -3,8 +3,12 @@
 import React, { useState, useEffect } from 'react';
 import { ScheduleItem } from '@/types/schedule';
 import { MASTER_SCHEDULES } from '@/utils/schedulesData';
-// generator utilities imported below (including stripMarkdown)
 import { getTodayMasehi, getTodayDayName, getTodayHijri } from '@/utils/dateUtils';
+import { 
+  getFormattedDateInput, 
+  getDayNameFromDateString, 
+  getFullMasehiFromDateString 
+} from '@/utils/dateFormatter';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { Copy, Check, Trash2, Video, Sparkles, Calendar, Eye, RefreshCw, Plus, Minus } from 'lucide-react';
 import { 
@@ -21,6 +25,9 @@ export default function AppDashboard() {
   const [selectedDayFilter, setSelectedDayFilter] = useState<string>('Selasa');
   const [activeTab, setActiveTab] = useState<PreviewTab>('studio');
   const [hijriOffset, setHijriOffset] = useState<number>(0);
+  
+  // State untuk kontrol Date Picker Kalender (format: YYYY-MM-DD)
+  const [pickerDate, setPickerDate] = useState<string>(getFormattedDateInput());
   
   const [formData, setFormData] = useState<ScheduleItem>({
     id: '1',
@@ -43,28 +50,53 @@ export default function AppDashboard() {
 
   const [copiedKey, setCopiedKey] = useState<string | null>(null);
 
+  // Helper fungsi untuk memperbarui seluruh tanggal (Hari, Masehi, Hijriah) dari objek Date
+  const applyDateChange = (targetDate: Date, offset: number = hijriOffset) => {
+    const dayName = getTodayDayName(targetDate);
+    const masehiStr = getTodayMasehi(targetDate);
+    const hijriStr = getTodayHijri(offset, targetDate);
+
+    setSelectedDayFilter(dayName);
+    setFormData(prev => ({
+      ...prev,
+      hari: dayName,
+      tanggalMasehi: masehiStr,
+      tanggalHijri: hijriStr
+    }));
+  };
+
   // Auto set tanggal hari ini saat halaman dimuat
   useEffect(() => {
-    const todayDay = getTodayDayName();
-    setSelectedDayFilter(todayDay);
-    
-    setFormData(prev => ({
-      ...prev,
-      hari: todayDay,
-      tanggalMasehi: getTodayMasehi(),
-      tanggalHijri: getTodayHijri(hijriOffset)
-    }));
+    const today = new Date();
+    setPickerDate(getFormattedDateInput(today));
+    applyDateChange(today, hijriOffset);
+  }, []);
+
+  // Apabila offset Hijriah diubah (+ / -), hitung ulang Hijriah berdasarkan tanggal yang sedang aktif di picker
+  useEffect(() => {
+    if (pickerDate) {
+      const currentDate = new Date(pickerDate + 'T00:00:00');
+      setFormData(prev => ({
+        ...prev,
+        tanggalHijri: getTodayHijri(hijriOffset, currentDate)
+      }));
+    }
   }, [hijriOffset]);
 
+  // Handler saat Tanggal pada Kalender Diubah Manual
+  const handlePickerChange = (dateValue: string) => {
+    setPickerDate(dateValue);
+    if (dateValue) {
+      const selectedDate = new Date(dateValue + 'T00:00:00');
+      applyDateChange(selectedDate, hijriOffset);
+    }
+  };
+
+  // Handler Tombol Sync / Reset Ke Hari Ini
   const handleSyncDate = () => {
-    const todayDay = getTodayDayName();
-    setSelectedDayFilter(todayDay);
-    setFormData(prev => ({
-      ...prev,
-      hari: todayDay,
-      tanggalMasehi: getTodayMasehi(),
-      tanggalHijri: getTodayHijri(hijriOffset)
-    }));
+    const today = new Date();
+    setPickerDate(getFormattedDateInput(today));
+    applyDateChange(today, hijriOffset);
   };
 
   const handleSelectSchedule = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -123,12 +155,11 @@ export default function AppDashboard() {
           <div className="flex items-center gap-3">
             <Sparkles className="text-alfurqon-gold w-6 h-6" />
             <div>
-              <h1 className="font-bold text-lg leading-tight">Al Furqon TV | Broadcast Generate 2.0</h1>
+              <h1 className="font-bold text-lg leading-tight">Al Furqon TV | Broadcast Generator 2.1</h1>
               <p className="text-xs text-emerald-200/80">Generator Schedule & Caption Live Streaming</p>
             </div>
           </div>
           
-          {/* TOMBOL SWITCHER TEMA */}
           <div className="flex items-center gap-3">
             <ThemeToggle />
           </div>
@@ -172,7 +203,7 @@ export default function AppDashboard() {
               </div>
 
               <div className="col-span-2">
-                <label className="block text-emerald-100 mb-1 font-semibold">2. Pilih Jam & Kajian</label>
+                <label className="block text-emerald-100 mb-1 font-semibold">2. Pilih Jadwal Kajian</label>
                 <select 
                   onChange={handleSelectSchedule}
                   defaultValue=""
@@ -200,7 +231,17 @@ export default function AppDashboard() {
               </button>
             </h2>
 
+            {/* INPUT KALENDER & HARI */}
             <div className="grid grid-cols-3 gap-2 text-xs">
+              <div className="col-span-2">
+                <label className="block font-semibold mb-1">Pilih Tanggal Kalender</label>
+                <input 
+                  type="date"
+                  value={pickerDate}
+                  onChange={(e) => handlePickerChange(e.target.value)}
+                  className="w-full p-2 bg-background border border-card-border rounded font-semibold text-alfurqon-green dark:text-alfurqon-lightgreen focus:ring-2 focus:ring-alfurqon-green outline-none cursor-pointer"
+                />
+              </div>
               <div>
                 <label className="block font-semibold mb-1">Hari</label>
                 <input 
@@ -210,20 +251,11 @@ export default function AppDashboard() {
                   className="w-full p-2 bg-background border border-card-border rounded font-medium focus:ring-2 focus:ring-alfurqon-green outline-none" 
                 />
               </div>
-              <div className="col-span-2">
-                <label className="block font-semibold mb-1">Jam (WIB)</label>
-                <input 
-                  type="text" 
-                  value={formData.jam} 
-                  onChange={(e) => setFormData({...formData, jam: e.target.value})}
-                  className="w-full p-2 bg-background border border-card-border rounded font-medium focus:ring-2 focus:ring-alfurqon-green outline-none" 
-                />
-              </div>
             </div>
 
             <div className="grid grid-cols-2 gap-2 text-xs bg-background/50 p-2.5 rounded-lg border border-card-border">
               <div>
-                <label className="block font-semibold mb-1 opacity-80">Tanggal Masehi (Auto)</label>
+                <label className="block font-semibold mb-1 opacity-80">Tanggal Masehi</label>
                 <input 
                   type="text" 
                   value={formData.tanggalMasehi} 
@@ -233,17 +265,19 @@ export default function AppDashboard() {
               </div>
               <div>
                 <div className="flex justify-between items-center mb-1">
-                  <label className="font-semibold opacity-80">Tanggal Hijriah (Auto)</label>
+                  <label className="font-semibold opacity-80">Tanggal Hijriah</label>
                   <div className="flex gap-1">
                     <button 
                       onClick={() => setHijriOffset(prev => prev - 1)}
                       className="bg-card-border hover:bg-alfurqon-green hover:text-white px-1.5 py-0.5 rounded text-[10px] font-bold cursor-pointer"
+                      title="Kurangi 1 hari Hijriah"
                     >
                       <Minus className="w-3 h-3" />
                     </button>
                     <button 
                       onClick={() => setHijriOffset(prev => prev + 1)}
                       className="bg-card-border hover:bg-alfurqon-green hover:text-white px-1.5 py-0.5 rounded text-[10px] font-bold cursor-pointer"
+                      title="Tambah 1 hari Hijriah"
                     >
                       <Plus className="w-3 h-3" />
                     </button>
@@ -260,16 +294,12 @@ export default function AppDashboard() {
 
             <div className="grid grid-cols-3 gap-2 text-xs">
               <div className="col-span-2">
-                <label className="block font-semibold mb-1">Judul / Tema Kajian</label>
+                <label className="block font-semibold mb-1">Jam (WIB)</label>
                 <input 
                   type="text" 
-                  value={formData.tema} 
-                  onChange={(e) => setFormData({
-                    ...formData, 
-                    tema: toTitleCase(e.target.value)
-                  })}
-                  placeholder="misal: rukun-rukun sholat"
-                  className="w-full p-2 bg-background border border-card-border rounded font-bold text-alfurqon-green dark:text-alfurqon-lightgreen focus:ring-2 focus:ring-alfurqon-green outline-none" 
+                  value={formData.jam} 
+                  onChange={(e) => setFormData({...formData, jam: e.target.value})}
+                  className="w-full p-2 bg-background border border-card-border rounded font-medium focus:ring-2 focus:ring-alfurqon-green outline-none" 
                 />
               </div>
               <div>
@@ -281,6 +311,20 @@ export default function AppDashboard() {
                   className="w-full p-2 bg-background border border-card-border rounded text-center font-bold focus:ring-2 focus:ring-alfurqon-green outline-none" 
                 />
               </div>
+            </div>
+
+            <div className="text-xs">
+              <label className="block font-semibold mb-1">Judul / Tema Kajian</label>
+              <input 
+                type="text" 
+                value={formData.tema} 
+                onChange={(e) => setFormData({
+                  ...formData, 
+                  tema: toTitleCase(e.target.value)
+                })}
+                placeholder="misal: rukun-rukun sholat"
+                className="w-full p-2 bg-background border border-card-border rounded font-bold text-alfurqon-green dark:text-alfurqon-lightgreen focus:ring-2 focus:ring-alfurqon-green outline-none" 
+              />
             </div>
 
             <div className="text-xs">
@@ -339,7 +383,7 @@ export default function AppDashboard() {
                   value={formData.narsumTematik || ''} 
                   onChange={(e) => setFormData({
                     ...formData, 
-                    narsumTematik: toTitleCase(e.target.value) // <- Diubah ke toTitleCase
+                    narsumTematik: toTitleCase(e.target.value)
                   })}
                   placeholder="misal: Ustadz Ahmad Mahmud M.A."
                   className="w-full p-2 bg-card border border-alfurqon-gold/40 rounded font-semibold outline-none focus:ring-2 focus:ring-alfurqon-gold" 
@@ -352,7 +396,7 @@ export default function AppDashboard() {
                   value={formData.kategoriTematik || ''} 
                   onChange={(e) => setFormData({
                     ...formData, 
-                    kategoriTematik: toTitleCase(e.target.value) // <- Diubah ke toTitleCase juga agar rapi
+                    kategoriTematik: toTitleCase(e.target.value)
                   })}
                   className="w-full p-2 bg-card border border-alfurqon-gold/40 rounded outline-none focus:ring-2 focus:ring-alfurqon-gold" 
                 />
@@ -467,7 +511,6 @@ export default function AppDashboard() {
                 </div>
                 
                 <div className="flex items-center gap-2">
-                  {/* 1. TOMBOL SALIN BERSIH / POLOSAN */}
                   <button
                     onClick={() => handleCopy(stripMarkdown(getActiveCaption()), `copy_clean_${activeTab}`)}
                     className="px-3 py-2 bg-slate-700 hover:bg-slate-600 active:scale-95 text-white font-semibold rounded-lg text-xs shadow flex items-center gap-1.5 transition cursor-pointer"
@@ -484,7 +527,6 @@ export default function AppDashboard() {
                     )}
                   </button>
 
-                  {/* 2. TOMBOL SALIN CAPTION FORMAT (ASLI) */}
                   <button
                     onClick={() => handleCopy(getActiveCaption(), `copy_${activeTab}`)}
                     className="px-3 py-2 bg-alfurqon-green hover:bg-alfurqon-lightgreen active:scale-95 text-white font-bold rounded-lg text-xs shadow flex items-center gap-1.5 transition cursor-pointer"

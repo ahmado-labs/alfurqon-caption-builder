@@ -13,25 +13,28 @@ const HARI_INDONESIA: { [key: number]: string } = {
   6: 'Sabtu',
 };
 
-// Format Masehi: "21 Juli 2026"
-export function getTodayMasehi(): string {
-  const today = new Date();
-  const date = today.getDate();
-  const month = BULAN_INDONESIA[today.getMonth()];
-  const year = today.getFullYear();
+// Format Masehi: contoh "21 Juli 2026"
+export function getTodayMasehi(baseDate: Date = new Date()): string {
+  const date = baseDate.getDate();
+  const month = BULAN_INDONESIA[baseDate.getMonth()];
+  const year = baseDate.getFullYear();
 
   return `${date} ${month} ${year}`;
 }
 
-export function getTodayDayName(): string {
-  const today = new Date();
-  return HARI_INDONESIA[today.getDay()] || 'Selasa';
+// Mengambil Nama Hari
+export function getTodayDayName(baseDate: Date = new Date()): string {
+  return HARI_INDONESIA[baseDate.getDay()] || 'Selasa';
 }
 
-// Simple Hijri Estimator
-export function getTodayHijri(offsetDays: number = 0): string {
-  const today = new Date();
-  today.setDate(today.getDate() + offsetDays);
+// Simple Hijri Estimator (Mendukung tanggal pilihan & offset hari)
+export function getTodayHijri(offsetDays: number = 0, baseDate: Date = new Date()): string {
+  // Salin objek tanggal agar tidak merubah tanggal asli
+  const targetDate = new Date(baseDate.getTime());
+  
+  if (offsetDays !== 0) {
+    targetDate.setDate(targetDate.getDate() + offsetDays);
+  }
 
   try {
     const formatter = new Intl.DateTimeFormat('id-ID-u-ca-islamic-umalqura', {
@@ -39,7 +42,7 @@ export function getTodayHijri(offsetDays: number = 0): string {
       month: 'long',
       year: 'numeric'
     });
-    const parts = formatter.formatToParts(today);
+    const parts = formatter.formatToParts(targetDate);
     
     let day = '';
     let month = '';

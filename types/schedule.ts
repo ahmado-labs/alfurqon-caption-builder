@@ -15,10 +15,10 @@ export interface ScheduleItem {
   youtubeUrl?: string;     // Link streaming YT
   facebookUrl?: string;    // Link streaming FB
   
-  // Fitur Khusus Tematik / Tabligh Akbar / Badal
+  // Fitur Khusus Tematik / Tabligh Akbar / Kajian Spesial
   isTematik?: boolean;
   narsumTematik?: string;
-  kategoriTematik?: string; // Contoh: "Tabligh Akbar" / "Badal"
+  kategoriTematik?: string; // Contoh: "Tabligh Akbar" / "Kajian Spesial" / "Kajian Tematik"
   
   kategori: KategoriKajian;
   createdAt: number;

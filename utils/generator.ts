@@ -160,7 +160,7 @@ export function generateCaptionText(
   // 1. KONSULTASI
   if (mode === 'konsultasi') {
     return `📡 (LIVE) Studio Al Furqon TV
-Ma'had Al Furqon Al Islami, Srowo, Sidayu, Gresik - Jawa Timur
+Ma'had Al Furqon Al Islami, _Srowo, Sidayu, Gresik - Jawa Timur_
 
 ${headerWaktu}
 
@@ -178,7 +178,7 @@ ${footer}`;
   // 2. PROGRAM ANAK
 if (mode === 'program_anak') {
   return `📡 (LIVE) Studio Al Furqon TV
-Ma'had Al Furqon Al Islami, Srowo, Sidayu, Gresik - Jawa Timur
+Ma'had Al Furqon Al Islami, _Srowo, Sidayu, Gresik - Jawa Timur_
 
 ${headerWaktu}
 
@@ -199,7 +199,7 @@ ${footer}`;
     const kategori = item.kategoriTematik || 'Tabligh Akbar';
 
     return `📡 (LIVE) Masjid Jami' Al Furqon
-Ma'had Al Furqon Al Islami, Srowo, Sidayu, Gresik - Jawa Timur
+Ma'had Al Furqon Al Islami, _Srowo, Sidayu, Gresik - Jawa Timur_
 
 ${headerWaktu}
 
@@ -217,7 +217,7 @@ ${footer}`;
   // 4. MASJID (Reguler)
   if (mode === 'masjid') {
     return `📡 (LIVE) Masjid Jami' Al Furqon
-Ma'had Al Furqon Al Islami, Srowo, Sidayu, Gresik - Jawa Timur
+Ma'had Al Furqon Al Islami, _Srowo, Sidayu, Gresik - Jawa Timur_
 
 ${headerWaktu}
 
@@ -235,7 +235,7 @@ ${footer}`;
 
   // 5. STUDIO (Reguler / Standard)
   return `📡 (LIVE) Studio Al Furqon TV
-Ma'had Al Furqon Al Islami, Srowo, Sidayu, Gresik - Jawa Timur
+Ma'had Al Furqon Al Islami, _Srowo, Sidayu, Gresik - Jawa Timur_
 
 ${headerWaktu}
 
