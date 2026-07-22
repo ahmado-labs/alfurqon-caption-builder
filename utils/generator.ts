@@ -7,9 +7,8 @@ export function toTitleCase(str: string): string {
 
   // Daftar kata/gelar yang harus SELALU KAPITAL
   const ALWAYS_UPPERCASE = [
-    'LC', 'MA', 'M.A', 'M.A.', 'MPD', 'M.PD', 'M.PD.', 
-    'PHD', 'PH.D', 'PH.D.', 'S.AG', 'S.AG.', 'S.PD', 'S.PD.', 
-    'S.H', 'S.H.', 'S.SI', 'S.SI.', 'B.A', 'B.A.', 'M.SI', 'M.SI.'
+    'B.A.', 'M.A.', 'M.B.A.', 'M.M.', 'S.E.', 'M.E.', 'S.H.', 'M.H.', 'S.P.', 'M.P.', 
+    'S.S.', 'M.S.', 'S.T.', 'M.T.', 'AK.', 'AR.', 'C.A.', 'CFA.', 'CPA.', 'CTA.', 'BKP.'
   ];
 
   return str
