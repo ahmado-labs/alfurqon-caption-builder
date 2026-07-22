@@ -26,6 +26,9 @@ export default function AppDashboard() {
   const [activeTab, setActiveTab] = useState<PreviewTab>('studio');
   const [hijriOffset, setHijriOffset] = useState<number>(0);
   
+  // State untuk melacak ID/Key unik kajian yang sedang aktif
+  const [currentScheduleKey, setCurrentScheduleKey] = useState<string>('');
+
   // State untuk kontrol Date Picker Kalender (format: YYYY-MM-DD)
   const [pickerDate, setPickerDate] = useState<string>(getFormattedDateInput());
   
@@ -99,6 +102,7 @@ export default function AppDashboard() {
     applyDateChange(today, hijriOffset);
   };
 
+  // HANDLER PILIH JADWAL KAJIAN (DENGAN INTEGRASI LOCALSTORAGE)
   const handleSelectSchedule = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const index = parseInt(e.target.value);
     if (isNaN(index)) return;
@@ -106,18 +110,48 @@ export default function AppDashboard() {
     const selected = filteredSchedules[index];
     if (selected) {
       const category = selected.kategori || 'studio';
+      
+      // Buat Kunci Unik berdasarkan Nama Kitab
+      const scheduleKey = `pertemuan_${selected.kitab.replace(/\s+/g, '_')}`;
+      setCurrentScheduleKey(scheduleKey);
+
+      // Cek apakah ada angka pertemuan terakhir yang tersimpan
+      const savedPertemuan = localStorage.getItem(scheduleKey);
+      
+      let nextPertemuan = '1';
+      if (savedPertemuan) {
+        const lastNum = parseInt(savedPertemuan);
+        if (!isNaN(lastNum)) {
+          nextPertemuan = (lastNum + 1).toString(); // Bertambah +1 secara otomatis
+        }
+      }
+
       setFormData(prev => ({
         ...prev,
         jam: selected.jam,
         kitab: selected.kitab,
         ustadz: selected.ustadz,
         tema: selected.kitab,
+        pertemuanKe: nextPertemuan,
         kategori: category
       }));
+
+      // Simpan angka pertemuan baru ke localStorage
+      localStorage.setItem(scheduleKey, nextPertemuan);
 
       if (category === 'konsultasi') setActiveTab('konsultasi');
       else if (category === 'program_anak') setActiveTab('program_anak');
       else setActiveTab('studio');
+    }
+  };
+
+  // Handler jika nomor "Pertemuan Ke" diubah manual oleh operator
+  const handlePertemuanChange = (value: string) => {
+    setFormData(prev => ({ ...prev, pertemuanKe: value }));
+    
+    // Update nilai di localStorage agar angka acuan diperbarui
+    if (currentScheduleKey && value) {
+      localStorage.setItem(currentScheduleKey, value);
     }
   };
 
@@ -155,7 +189,7 @@ export default function AppDashboard() {
           <div className="flex items-center gap-3">
             <Sparkles className="text-alfurqon-gold w-6 h-6" />
             <div>
-              <h1 className="font-bold text-lg leading-tight">Al Furqon TV | Broadcast Generator 2.1</h1>
+              <h1 className="font-bold text-lg leading-tight">Al Furqon TV | Broadcast Generator 2.2</h1>
               <p className="text-xs text-emerald-200/80">Generator Schedule & Caption Live Streaming</p>
             </div>
           </div>
@@ -303,12 +337,12 @@ export default function AppDashboard() {
                 />
               </div>
               <div>
-                <label className="block font-semibold mb-1">Pertemuan Ke</label>
+                <label className="block font-semibold mb-1 text-alfurqon-green dark:text-alfurqon-lightgreen">Pertemuan Ke (CEK LAGI!)</label>
                 <input 
                   type="text" 
                   value={formData.pertemuanKe || ''} 
-                  onChange={(e) => setFormData({...formData, pertemuanKe: e.target.value})}
-                  className="w-full p-2 bg-background border border-card-border rounded text-center font-bold focus:ring-2 focus:ring-alfurqon-green outline-none" 
+                  onChange={(e) => handlePertemuanChange(e.target.value)}
+                  className="w-full p-2 bg-background border border-alfurqon-green/50 rounded text-center font-bold text-alfurqon-green dark:text-alfurqon-lightgreen focus:ring-2 focus:ring-alfurqon-green outline-none" 
                 />
               </div>
             </div>

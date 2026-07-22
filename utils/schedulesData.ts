@@ -42,7 +42,6 @@ export const MASTER_SCHEDULES: FixedSchedule[] = [
 
   // RABU
   { hari: 'Rabu', jam: '05.00', kitab: 'BIMBINGAN MENUJU AQIDAH YANG BENAR', ustadz: 'Ustadz Rohmad Hadi' },
-  { hari: 'Rabu', jam: '08.00', kitab: 'PELAJARAN PENTING BAGI WANITA MUSLIMAH', ustadz: 'Ustadz Anwari Ahmad' },
   { hari: 'Rabu', jam: '13.00', kitab: 'INTISARI AQIDAH SALAF', ustadz: 'Ustadz Abu Faiz Sholahuddin' },
   { hari: 'Rabu', jam: '15.45', kitab: 'HADITS SEPUTAR TAUHID IBADAH', ustadz: 'Ustadz Muhammad Nadhirin, Lc.' },
   { hari: 'Rabu', jam: '18.00', kitab: 'RAHASIA KELEMBUTAN HATI', ustadz: 'Ustadz Iqbal Astar, Lc.' },
@@ -59,5 +58,5 @@ export const MASTER_SCHEDULES: FixedSchedule[] = [
   // JUM'AT
   { hari: 'Jum\'at', jam: '05.00', kitab: 'TAMAN BAGI ORANG-ORANG SHOLEH', ustadz: 'Ustadz Shofwu Mi\'wan, Lc.' },
   { hari: 'Jum\'at', jam: '18.00', kitab: 'MUKHTASOR TADZKIRUTUS SAMI\' WAL MUTAKALLIM', ustadz: 'Ustadz Ahmad Sabiq, Lc.' },
-  { hari: 'Jum\'at', jam: '20.00', kitab: 'TAFSIR AL-QUR\'AN / TAFSIR JALALAIN', ustadz: 'Ustadz Ahmad Sabiq, Lc.' },
+  { hari: 'Jum\'at', jam: '20.00', kitab: 'TAFSIR AL-QUR\'AN (TAFSIR JALALAIN)', ustadz: 'Ustadz Ahmad Sabiq, Lc.' },
 ];
