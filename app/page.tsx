@@ -220,7 +220,7 @@ export default function AppDashboard() {
           <div className="flex items-center gap-3">
             <Sparkles className="text-alfurqon-gold w-6 h-6" />
             <div>
-              <h1 className="font-bold text-lg leading-tight">Al Furqon TV | Broadcast Generator 2.4</h1>
+              <h1 className="font-bold text-lg leading-tight">Al Furqon TV | Broadcast Generator 2.5</h1>
               <p className="text-xs text-emerald-200/80">Generator Schedule & Caption Live Streaming</p>
             </div>
           </div>
