@@ -10,7 +10,7 @@ import {
   getFullMasehiFromDateString 
 } from '@/utils/dateFormatter';
 import { ThemeToggle } from '@/components/ThemeToggle';
-import { Copy, Check, Trash2, Video, Sparkles, Calendar, Eye, RefreshCw, Plus, Minus, Clipboard } from 'lucide-react';
+import { Copy, Check, Trash2, Video, Sparkles, Calendar, Eye, RefreshCw, Plus, Minus, Clipboard, HelpCircle } from 'lucide-react';
 import { 
   generateStandardTitle, 
   generateTematikTitle, 
@@ -93,6 +93,27 @@ export default function AppDashboard() {
       const selectedDate = new Date(dateValue + 'T00:00:00');
       applyDateChange(selectedDate, hijriOffset);
     }
+  };
+
+  // Handler untuk menambah/mengurangi angka tanggal Hijriah saja secara langsung
+  const handleShiftHijriDayOnly = (delta: number) => {
+    setFormData(prev => {
+      const currentText = prev.tanggalHijri;
+      // Cari angka pertama di string (contoh: angka "9" dari "9 Safar 1448")
+      const match = currentText.match(/\d+/);
+      if (!match) return prev;
+
+      const currentNum = parseInt(match[0], 10);
+      const newNum = Math.max(1, currentNum + delta); // Angka minimal 1
+
+      // Ganti angka tersebut dengan angka baru
+      const updatedText = currentText.replace(/\d+/, newNum.toString());
+
+      return {
+        ...prev,
+        tanggalHijri: updatedText
+      };
+    });
   };
 
   // Handler Tombol Sync / Reset Ke Hari Ini
@@ -299,7 +320,24 @@ export default function AppDashboard() {
 
             <div className="grid grid-cols-2 gap-2 text-xs bg-background/50 p-2.5 rounded-lg border border-card-border">
               <div>
-                <label className="block font-semibold mb-1 opacity-80">Tanggal Masehi</label>
+                
+                {/* ===== (Label + Icon HelpCircle) ===== */}
+                <div className="flex items-center gap-1">
+                  <label className="block font-semibold mb-1 opacity-80">Tanggal Masehi</label>
+
+                    {/* Icon & Tooltip petunjuk */}
+                    <div className="relative flex items-center group cursor-pointer">
+                      <HelpCircle className="w-3.5 h-3.5 text-alfurqon-gold hover:text-amber-400 transition" />
+                      
+                      {/* Box Pesan saat Mouse Hover */}
+                      <div className="absolute bottom-full left-0 mb-2 hidden group-hover:block w-56 p-2.5 bg-slate-900 text-white text-[11px] leading-tight rounded-lg shadow-xl z-50 pointer-events-none border border-slate-700">
+                        <p className="font-bold text-alfurqon-gold mb-1">📌 Info Pergantian Hari:</p>
+                        <p>Tanggal Masehi akan berubah saat hari berikutnya setelah pukul 00:00</p>
+                        <div className="absolute top-full left-2 border-4 border-transparent border-t-slate-900"></div>
+                      </div>
+                    </div>
+                </div>
+
                 <input 
                   type="text" 
                   value={formData.tanggalMasehi} 
@@ -309,7 +347,25 @@ export default function AppDashboard() {
               </div>
               <div>
                 <div className="flex justify-between items-center mb-1">
-                  <label className="font-semibold opacity-80">Tanggal Hijriah</label>
+
+                  {/* ===== (Label + Icon HelpCircle) ===== */}
+                  <div className="flex items-center gap-1">
+                    <label className="font-semibold opacity-80">Tanggal Hijriah</label>
+                    
+                    {/* Icon & Tooltip Peringatan Maghrib */}
+                    <div className="relative flex items-center group cursor-pointer">
+                      <HelpCircle className="w-3.5 h-3.5 text-alfurqon-gold hover:text-amber-400 transition" />
+                      
+                      {/* Box Pesan saat Mouse Hover */}
+                      <div className="absolute bottom-full left-0 mb-2 hidden group-hover:block w-56 p-2.5 bg-slate-900 text-white text-[11px] leading-tight rounded-lg shadow-xl z-50 pointer-events-none border border-slate-700">
+                        <p className="font-bold text-alfurqon-gold mb-1">📌 Info Pergantian Hari:</p>
+                        <p>Sistem penanggalan Islam, hari berganti saat <b>Maghrib</b>. Jadi, untuk kajian Maghrib & Malam, sementara sesuaikan tanggal Hijriah (+1) yang di dalam form, bukan yang diluar. Yang luar Khusus <b>kalibrasi kalender</b>.</p>
+                        <div className="absolute top-full left-2 border-4 border-transparent border-t-slate-900"></div>
+                      </div>
+                    </div>
+                  </div>
+                  {/* ==================================== */}
+
                   <div className="flex gap-1">
                     <button 
                       onClick={() => setHijriOffset(prev => prev - 1)}
@@ -327,12 +383,31 @@ export default function AppDashboard() {
                     </button>
                   </div>
                 </div>
-                <input 
-                  type="text" 
-                  value={formData.tanggalHijri} 
-                  onChange={(e) => setFormData({...formData, tanggalHijri: e.target.value})}
-                  className="w-full p-2 bg-card border border-card-border rounded focus:ring-2 focus:ring-alfurqon-green outline-none font-semibold" 
-                />
+
+                <div className="flex items-center border border-card-border rounded overflow-hidden bg-card focus-within:ring-2 focus-within:ring-alfurqon-green">
+                  <button 
+                    type="button"
+                    onClick={() => handleShiftHijriDayOnly(-1)}
+                    className="px-2.5 py-2 bg-card-border/50 hover:bg-alfurqon-green hover:text-white transition font-bold text-xs cursor-pointer text-foreground"
+                    title="Kurangi tanggal Hijriah (-1)"
+                  >
+                    <Minus className="w-3 h-3" />
+                  </button>
+                  <input 
+                    type="text" 
+                    value={formData.tanggalHijri} 
+                    onChange={(e) => setFormData({...formData, tanggalHijri: e.target.value})}
+                    className="w-full p-2 bg-card border border-card-border rounded focus:ring-2 focus:ring-alfurqon-green outline-none font-semibold" 
+                  />
+                  <button 
+                    type="button"
+                    onClick={() => handleShiftHijriDayOnly(1)}
+                    className="px-2.5 py-2 bg-card-border/50 hover:bg-alfurqon-green hover:text-white transition font-bold text-xs cursor-pointer text-foreground"
+                    title="Tambah tanggal Hijriah (+1 untuk Maghrib/Malam)"
+                  >
+                    <Plus className="w-3 h-3" />
+                  </button>
+                </div>
               </div>
             </div>
 
