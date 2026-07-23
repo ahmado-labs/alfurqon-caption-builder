@@ -114,16 +114,16 @@ export function generateStandardTitle(item: ScheduleItem): string {
 
   // 1. Jika Tema diisi
   if (temaInput) {
-    return `[LIVE] ${prefixPertemuan}${temaInput} | ${ustadz}`;
+    return `🔴[ LIVE ] ${prefixPertemuan}${temaInput} | ${ustadz}`;
   }
 
   // 2. Jika Tema kosong, gunakan Kitab
   if (kitabInput) {
-    return `[LIVE] ${prefixPertemuan}${kitabInput} | ${ustadz}`;
+    return `🔴[ LIVE ] ${prefixPertemuan}${kitabInput} | ${ustadz}`;
   }
 
   // 3. Fallback jika dua-duanya kosong
-  return `[LIVE] KAJIAN ISLAMI | ${ustadz}`;
+  return `🔴[ LIVE ] KAJIAN ISLAMI | ${ustadz}`;
 }
 
 // Live Title Tematik
@@ -136,7 +136,7 @@ export function generateTematikTitle(item: ScheduleItem): string {
 
   const judulUtama = temaInput || 'KAJIAN TEMATIK';
 
-  return `[LIVE]  ${judulUtama} | ${narsum}`; // tambahkan ${kategori}: kalau suatu saatnya ingin menampilkan kategori tematik di judul, tapi untuk sekarang kita sembunyikan dulu
+  return `🔴[ LIVE ]  ${judulUtama} | ${narsum}`; // tambahkan ${kategori}: kalau suatu saatnya ingin menampilkan kategori tematik di judul, tapi untuk sekarang kita sembunyikan dulu
 }
 
 // Text Caption Generator

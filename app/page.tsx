@@ -10,7 +10,7 @@ import {
   getFullMasehiFromDateString 
 } from '@/utils/dateFormatter';
 import { ThemeToggle } from '@/components/ThemeToggle';
-import { Copy, Check, Trash2, Video, Sparkles, Calendar, Eye, RefreshCw, Plus, Minus } from 'lucide-react';
+import { Copy, Check, Trash2, Video, Sparkles, Calendar, Eye, RefreshCw, Plus, Minus, Clipboard } from 'lucide-react';
 import { 
   generateStandardTitle, 
   generateTematikTitle, 
@@ -155,6 +155,20 @@ export default function AppDashboard() {
     navigator.clipboard.writeText(text);
     setCopiedKey(key);
     setTimeout(() => setCopiedKey(null), 1500);
+  };
+
+  // Handler untuk Paste Link dari Clipboard secara Otomatis
+  const handlePasteLink = async (field: 'youtubeUrl' | 'facebookUrl') => {
+    try {
+      const text = await navigator.clipboard.readText();
+      setFormData(prev => ({
+        ...prev,
+        [field]: text
+      }));
+    } catch (err) {
+      console.error('Gagal membaca clipboard:', err);
+      alert('Akses clipboard ditolak atau tidak didukung oleh browser.');
+    }
   };
 
   const filteredSchedules = MASTER_SCHEDULES.filter(s => s.hari === selectedDayFilter);
@@ -400,8 +414,19 @@ export default function AppDashboard() {
             </div>
 
             <div className="grid grid-cols-2 gap-2 text-xs pt-1">
+              {/* INPUT YOUTUBE */}
               <div>
-                <label className="block font-semibold mb-1 text-red-500">Link YouTube</label>
+                <div className="flex justify-between items-center mb-1">
+                  <label className="font-semibold text-red-500">Link YouTube</label>
+                  <button
+                    type="button"
+                    onClick={() => handlePasteLink('youtubeUrl')}
+                    className="text-[10px] bg-red-500/10 hover:bg-red-500 hover:text-white text-red-500 px-1.5 py-0.5 rounded flex items-center gap-1 transition cursor-pointer font-medium"
+                    title="Paste link dari clipboard"
+                  >
+                    <Clipboard className="w-3 h-3" /> Paste
+                  </button>
+                </div>
                 <input 
                   type="text" 
                   value={formData.youtubeUrl || ''} 
@@ -410,8 +435,20 @@ export default function AppDashboard() {
                   className="w-full p-2 bg-background border border-card-border rounded text-blue-500 focus:ring-2 focus:ring-alfurqon-green outline-none" 
                 />
               </div>
+
+              {/* INPUT FACEBOOK */}
               <div>
-                <label className="block font-semibold mb-1 text-blue-500">Link Facebook</label>
+                <div className="flex justify-between items-center mb-1">
+                  <label className="font-semibold text-blue-500">Link Facebook</label>
+                  <button
+                    type="button"
+                    onClick={() => handlePasteLink('facebookUrl')}
+                    className="text-[10px] bg-blue-500/10 hover:bg-blue-500 hover:text-white text-blue-500 px-1.5 py-0.5 rounded flex items-center gap-1 transition cursor-pointer font-medium"
+                    title="Paste link dari clipboard"
+                  >
+                    <Clipboard className="w-3 h-3" /> Paste
+                  </button>
+                </div>
                 <input 
                   type="text" 
                   value={formData.facebookUrl || ''} 
