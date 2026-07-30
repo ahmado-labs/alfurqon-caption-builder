@@ -53,6 +53,7 @@ export const MASTER_SCHEDULES: FixedSchedule[] = [
   { hari: 'Kamis', jam: '13.00', kitab: 'PENYAKIT-PENYAKIT LISAN', ustadz: 'Ustadz Yahya Najaty, Lc.' },
   { hari: 'Kamis', jam: '15.45', kitab: 'FIQH AL-WAJIZ', ustadz: 'Ustadz Ma\'ruf Nur Salam, Lc.' },
   { hari: 'Kamis', jam: '18.00', kitab: 'RISALAH AT TABUKIYAH IBNUL QOYYIM', ustadz: 'Ustadz Abu Rima, Lc.' },
+  { hari: 'Kamis', jam: '18.00', kitab: 'TAFSIR AL-QUR\'AN SYEKH AS-SA\'ADI', ustadz: 'Ustadz Aunus Shofi' },
   { hari: 'Kamis', jam: '20.00', kitab: 'AD-DAA\' WA AD-DAWAA\'', ustadz: 'Ustadz Abu Rima, Lc.' },
 
   // JUM'AT
