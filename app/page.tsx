@@ -24,7 +24,13 @@ type PreviewTab = 'studio' | 'masjid' | 'konsultasi' | 'program_anak' | 'tematik
 export default function AppDashboard() {
   const [selectedDayFilter, setSelectedDayFilter] = useState<string>('Selasa');
   const [activeTab, setActiveTab] = useState<PreviewTab>('studio');
-  const [hijriOffset, setHijriOffset] = useState<number>(0);
+  const [hijriOffset, setHijriOffset] = useState<number>(() => {
+    if (typeof window !== 'undefined') {
+      const savedOffset = localStorage.getItem('alfurqon_hijri_offset');
+      return savedOffset ? parseInt(savedOffset, 10) : 0;
+    }
+    return 0;
+  });
   
   // State untuk melacak ID/Key unik kajian yang sedang aktif
   const [currentScheduleKey, setCurrentScheduleKey] = useState<string>('');
@@ -83,6 +89,10 @@ export default function AppDashboard() {
         ...prev,
         tanggalHijri: getTodayHijri(hijriOffset, currentDate)
       }));
+    }
+    // SIMPAN KALIBRASI KE LOCALSTORAGE
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('alfurqon_hijri_offset', hijriOffset.toString());
     }
   }, [hijriOffset]);
 
