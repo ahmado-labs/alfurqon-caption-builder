@@ -24,13 +24,16 @@ type PreviewTab = 'studio' | 'masjid' | 'konsultasi' | 'program_anak' | 'tematik
 export default function AppDashboard() {
   const [selectedDayFilter, setSelectedDayFilter] = useState<string>('Selasa');
   const [activeTab, setActiveTab] = useState<PreviewTab>('studio');
-  const [hijriOffset, setHijriOffset] = useState<number>(() => {
-    if (typeof window !== 'undefined') {
-      const savedOffset = localStorage.getItem('alfurqon_hijri_offset');
-      return savedOffset ? parseInt(savedOffset, 10) : 0;
+  // 1. Set angka awal selalu 0 agar Server & Browser sama-sama setuju di awal
+  const [hijriOffset, setHijriOffset] = useState<number>(0);
+
+  // 2. Baru baca memori browser SETELAH halaman sukses tampil di layar
+  useEffect(() => {
+    const savedOffset = localStorage.getItem('alfurqon_hijri_offset');
+    if (savedOffset !== null) {
+      setHijriOffset(parseInt(savedOffset, 10));
     }
-    return 0;
-  });
+  }, []);
   
   // State untuk melacak ID/Key unik kajian yang sedang aktif
   const [currentScheduleKey, setCurrentScheduleKey] = useState<string>('');
@@ -421,7 +424,9 @@ export default function AppDashboard() {
                   </button>
                 </div>
                 <div className="text-[10px] text-amber-500 mt-1">
-                  <span className="font-semibold">Kalibrasi Kalender:</span> {hijriOffset > 0 ? `+${hijriOffset}` : hijriOffset} hari dari Kalender Global.
+                  <strong>Kalibrasi Kalender:</strong> {hijriOffset > 0 ? `+${hijriOffset}` : hijriOffset} hari dari Kalender Global.
+                </div>
+                <div className="text-[10px] text-amber-500 mt-1">
                   <strong> Periksa & sesuaikan jika ada perbedaan!</strong>
                 </div>
               </div>  

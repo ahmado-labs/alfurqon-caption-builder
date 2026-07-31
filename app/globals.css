@@ -11,7 +11,7 @@
   /* Default / Light Mode Background & Foreground */
   --background: #f8faf5;
   --foreground: #122104;
-  --card-bg: #ffffff;
+  --card-bg: #88be5b;
   --card-border: #e2e8f0;
 }
 
@@ -47,7 +47,7 @@
   --color-alfurqon-gold: var(--brand-gold);
   --color-alfurqon-orange: var(--brand-orange);
 
---font-sans: var(--font-jakarta), system-ui, -apple-system, sans-serif;
+  --font-sans: var(--font-jakarta), system-ui, -apple-system, sans-serif;
   --font-mono: var(--font-jakarta), ui-monospace, SFMono-Regular, monospace;
 }
 
