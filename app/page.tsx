@@ -245,7 +245,8 @@ export default function AppDashboard() {
         
         {/* ================= KOLOM KIRI: FORM ================= */}
         <div className="lg:col-span-5 space-y-5">
-          
+
+          {/* JADWAL & TANGGAL */}
           <div className="bg-alfurqon-dark text-white p-4 rounded-xl shadow-md border border-alfurqon-green/30 space-y-3">
             <div className="flex items-center justify-between border-b border-white/10 pb-2">
               <div className="flex items-center gap-2">
@@ -295,6 +296,7 @@ export default function AppDashboard() {
             </div>
           </div>
 
+          {/* FORM DATA KAJIAN */}
           <div className="bg-card p-5 rounded-xl shadow-sm border border-card-border space-y-3">
             <h2 className="font-bold text-sm border-b border-card-border pb-2 flex justify-between items-center">
               <span>📝 FORM DATA KAJIAN</span>
@@ -417,6 +419,10 @@ export default function AppDashboard() {
                   >
                     <Plus className="w-3 h-3" />
                   </button>
+                </div>
+                <div className="text-[10px] text-foreground/70 mt-1">
+                  <span className="font-semibold">Kalibrasi Kalender:</span> {hijriOffset > 0 ? `+${hijriOffset}` : hijriOffset} hari dari Kalender Global.
+                  <span className="font-semibold"> (Periksa Kembali Sebelum Share!)</span>
                 </div>
               </div>
             </div>
