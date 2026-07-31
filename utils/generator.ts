@@ -75,9 +75,6 @@ ${ytUrl}
 🔴 Live Facebook:
 ${fbUrl}
 
-▶ Live Streaming YouTV
-https://youtv.id/
-
 📲 Download Aplikasi MeGo (intech apps)
 https://play.google.com/store/apps/details?id=one.mego&hl=id
 
@@ -97,7 +94,7 @@ a.n. TV AL FURQON
 Konfirmasi:
 📱 0852-8903-1400
 
-📨 Silakan bagikan informasi ini. Semoga Allah menjadikannya sebagai amal jariyah.
+📨 Jika bermanfaat, silakan bagikan. Semoga Allah menjadikannya amal jariyah untuk kita.
 
 ✨ بارك الله فيكم`;
 
