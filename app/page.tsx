@@ -421,8 +421,7 @@ export default function AppDashboard() {
                   </button>
                 </div>
                 <div className="text-[10px] text-foreground/70 mt-1">
-                  <span className="font-semibold">Kalibrasi Kalender:</span> {hijriOffset > 0 ? `+${hijriOffset}` : hijriOffset} hari dari Kalender Global.
-                  <span className="font-semibold"> (Periksa Kembali Sebelum Share!)</span>
+                  <span className="font-semibold">Kalibrasi Kalender:</span> {hijriOffset > 0 ? `+${hijriOffset}` : hijriOffset} hari dari Kalender Global. (Periksa & sesuaikan jika ada perbedaan)
                 </div>
               </div>
             </div>
