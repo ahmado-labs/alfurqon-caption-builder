@@ -10,7 +10,6 @@ export interface FixedSchedule {
 export const MASTER_SCHEDULES: FixedSchedule[] = [
   // SABTU
   { hari: 'Sabtu', jam: '05.00', kitab: 'SIFAT SHOLAT NABI ﷻ', ustadz: 'Ustadz Abu Yahya Rohmanto, Lc.' },
-  { hari: 'Sabtu', jam: '07.00', kitab: 'MARI BELAJAR BAHASA ARAB', ustadz: 'Ustadz Shofwu Mi\'wan, Lc.' },
   { hari: 'Sabtu', jam: '08.30', kitab: 'TAJWID', ustadz: 'Ustadz Dennis Manuputty, Lc.' },
   { hari: 'Sabtu', jam: '13.00', kitab: 'MENDIDIK SI BUAH HATI', ustadz: 'Ustadz Iqbal Astar, Lc.' },
   { hari: 'Sabtu', jam: '15.45', kitab: 'MUKHTASAR MINHAJUL QASHIDIN', ustadz: 'Ustadz Khoirul Fajar, Lc.' },
@@ -20,6 +19,7 @@ export const MASTER_SCHEDULES: FixedSchedule[] = [
   // AHAD
   { hari: 'Ahad', jam: '08.30', kitab: 'PROGRAM ANAK', ustadz: 'Ustadz Abu Ilyas Zainal Musthofa', kategori: 'program_anak' },
   { hari: 'Ahad', jam: '13.00', kitab: 'HADITS SEPUTAR PRAHARA AKHIR ZAMAN', ustadz: 'Ustadz Rokhmat Nashor, Lc., M.A.' },
+  { hari: 'Ahad', jam: '15.45', kitab: 'MARI BELAJAR BAHASA ARAB', ustadz: 'Ustadz Shofwu Mi\'wan, Lc.' },
   { hari: 'Ahad', jam: '18.00', kitab: 'RINGKASAN HADITS SHAHIH BUKHARI', ustadz: 'Ustadz Muhammad Nadhirin Lc.' },
   { hari: 'Ahad', jam: '20.00', kitab: '40 HADITS SEPUTAR MENIDIK ANAK', ustadz: 'Ustadz Fatih Mufarrikh, Lc., M.Pd.' },
 
