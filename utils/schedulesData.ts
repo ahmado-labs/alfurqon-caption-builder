@@ -42,7 +42,6 @@ export const MASTER_SCHEDULES: FixedSchedule[] = [
 
   // RABU
   { hari: 'Rabu', jam: '05.00', kitab: 'BIMBINGAN MENUJU AQIDAH YANG BENAR', ustadz: 'Ustadz Rohmad Hadi' },
-  { hari: 'Rabu', jam: '13.00', kitab: 'INTISARI AQIDAH SALAF', ustadz: 'Ustadz Abu Faiz Sholahuddin' },
   { hari: 'Rabu', jam: '15.45', kitab: 'HADITS SEPUTAR TAUHID IBADAH', ustadz: 'Ustadz Muhammad Nadhirin, Lc.' },
   { hari: 'Rabu', jam: '18.00', kitab: 'RAHASIA KELEMBUTAN HATI', ustadz: 'Ustadz Iqbal Astar, Lc.' },
   { hari: 'Rabu', jam: '20.00', kitab: 'ULUMUL QUR\'AN', ustadz: 'Ustadz Fida\' Bin Munadzir, B.A' },
@@ -51,7 +50,7 @@ export const MASTER_SCHEDULES: FixedSchedule[] = [
   { hari: 'Kamis', jam: '05.00', kitab: 'SENJATA SEORANG MUSLIM', ustadz: 'Ustadz Abu Harist Ainun Novi, Lc.' },
   { hari: 'Kamis', jam: '10.00', kitab: 'PELAJARAN PENTING BAGI WANITA MUSLIMAH', ustadz: 'Ustadz Anwari Ahmad' },
   { hari: 'Kamis', jam: '13.00', kitab: 'PENYAKIT-PENYAKIT LISAN', ustadz: 'Ustadz Yahya Najaty, Lc.' },
-  { hari: 'Kamis', jam: '15.45', kitab: 'FIQH AL-WAJIZ', ustadz: 'Ustadz Ma\'ruf Nur Salam, Lc.' },
+  { hari: 'Kamis', jam: '15.45', kitab: 'INTISARI AQIDAH SALAF', ustadz: 'Ustadz Abu Faiz Sholahuddin' },
   { hari: 'Kamis', jam: '18.00', kitab: 'RISALAH AT TABUKIYAH IBNUL QOYYIM', ustadz: 'Ustadz Abu Rima, Lc.' },
   { hari: 'Kamis', jam: '18.00', kitab: 'TAFSIR AL-QUR\'AN SYEKH AS-SA\'ADI', ustadz: 'Ustadz Aunus Shofi' },
   { hari: 'Kamis', jam: '20.00', kitab: 'AD-DAA\' WA AD-DAWAA\'', ustadz: 'Ustadz Abu Rima, Lc.' },
