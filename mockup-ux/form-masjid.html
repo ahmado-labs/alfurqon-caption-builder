@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<title>Form Masjid</title>
+
+</head>
+<body>
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<style>
+body{margin:0}
+.c{background:#88be5b;border:1px solid #e2e8f0;border-radius:12px;padding:20px;display:flex;flex-direction:column;gap:12px}
+.l{display:block;font-size:12px;font-weight:700;margin-bottom:4px}
+.i{width:100%;box-sizing:border-box;height:38px;padding:0 10px;border:1px solid #e2e8f0;border-radius:6px;background:#f8faf5;font:600 13px 'Plus Jakarta Sans',sans-serif;color:#122104}
+.b{height:38px;padding:0 12px;border-radius:6px;border:1px solid #e2e8f0;background:#f8faf5;font:700 12px 'Plus Jakarta Sans',sans-serif;color:#122104}
+.x{background:#94a3b8;color:#fff;border-color:#94a3b8}
+.m{font-size:12px;color:#122104}
+.r{display:grid;gap:8px}
+</style>
+
+<div style="min-height:1180px;background:#f8faf5;color:#122104;font-family:'Plus Jakarta Sans',sans-serif">
+<header style="background:#1d3906;color:#fff;padding:16px;border-bottom:2px solid #549f17">
+<div style="max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between">
+<div><div style="font-weight:800;font-size:18px">Al Furqon TV | Broadcast Generator 2.5</div><div style="font-size:12px;color:#a7f3d0">Home / Masjid</div></div>
+<button class="b" style="background:transparent;color:#fff;border-color:#549f17">Kembali ke Home</button>
+</div>
+</header>
+<main style="max-width:1280px;margin:0 auto;padding:20px 16px;display:flex;flex-direction:column;gap:18px">
+<div style="background:#1d3906;color:#fff;border-radius:12px;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;border:2px solid #61b81c">
+<div><div style="font-size:12px;color:#a7f3d0;font-weight:700;letter-spacing:.08em">KATEGORI TERPILIH</div><div style="font-size:28px;font-weight:800">MASJID</div></div>
+<div style="font-size:13px;color:#d9f2c2;max-width:420px;text-align:right">Caption dibuka dengan "(LIVE) Masjid Jami' Al Furqon". Salah kategori? Kembali ke Home.</div>
+</div>
+<div style="display:grid;grid-template-columns:5fr 7fr;gap:24px;align-items:start">
+<div style="display:flex;flex-direction:column;gap:18px">
+<div style="background:#1d3906;color:#fff;border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:10px;border:1px solid rgba(84,159,23,.4)">
+<div style="display:flex;justify-content:space-between;align-items:center"><b style="font-size:14px;color:#d9f2c2">AUTO-FILL JADWAL & TANGGAL</b><button class="b" style="height:30px;background:#549f17;color:#fff;border-color:#549f17">Sync Hari Ini</button></div>
+<div style="display:grid;grid-template-columns:1fr 2fr;gap:8px">
+<div><label class="l" style="color:#d9f2c2">1. Pilih Hari</label><input class="i" value="Ahad" style="background:rgba(0,0,0,.3);color:#fff;border-color:rgba(84,159,23,.4)"></div>
+<div><label class="l" style="color:#d9f2c2">2. Pilih Jadwal Kajian</label><input class="i" value="[18.00] RINGKASAN HADITS SHAHIH BUKH..." style="background:rgba(0,0,0,.3);color:#fff;border-color:rgba(84,159,23,.4)"></div>
+</div>
+</div>
+<div class="c">
+<div style="display:flex;justify-content:space-between;font-weight:800;font-size:14px;border-bottom:1px solid #e2e8f0;padding-bottom:8px"><span>FORM DATA KAJIAN (MASJID)</span><span style="color:#8f2f08;font-size:12px">Reset Input</span></div>
+<div style="display:grid;grid-template-columns:2fr 1fr;gap:8px"><div><label class="l">Pilih Tanggal Kalender</label><input class="i" value="11 Oktober 2026"></div><div><label class="l">Hari</label><input class="i" value="Ahad"></div></div>
+<div class="r" style="grid-template-columns:1fr 1fr;background:rgba(248,250,245,.5);padding:10px;border-radius:8px;border:1px solid #e2e8f0">
+<div><label class="l">Tanggal Masehi</label><input class="i" value="11 Oktober 2026"></div>
+<div><label class="l">Tanggal Hijriah</label><div style="display:flex;gap:4px"><button class="b" aria-label="Kurangi">-</button><input class="i" value="29 Rabiul Akhir 1448"><button class="b" aria-label="Tambah">+</button></div><div style="font-size:11px;color:#6b3a00;font-weight:700;margin-top:4px">Kalibrasi: +0 hari dari kalender global</div></div>
+</div>
+<div style="display:grid;grid-template-columns:2fr 1fr;gap:8px"><div><label class="l">Jam (WIB)</label><input class="i" value="18.00"></div><div><label class="l">Pertemuan Ke</label><div style="display:flex;gap:2px"><button class="b" aria-label="Kurangi">-</button><input class="i" value="12" style="text-align:center"><button class="b" style="background:#549f17;color:#fff" aria-label="Tambah">+</button></div></div></div>
+<div><label class="l">Judul / Tema Kajian</label><input class="i" value="Ringkasan Hadits Shahih Bukhari"></div>
+<div><label class="l">Pembahasan Kitab</label><input class="i" value="RINGKASAN HADITS SHAHIH BUKHARI"></div>
+<div><label class="l">Ustadz / Pemateri Harian</label><input class="i" value="Ustadz Muhammad Nadhirin Lc."></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px"><div><label class="l">Link YouTube</label><input class="i" value="https://youtube.com/live/abc123"></div><div><label class="l">Link Facebook</label><input class="i" placeholder="https://facebook.com/..."></div></div>
+</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:18px">
+<div class="c" style="gap:10px">
+<div style="font-size:12px;font-weight:800;border-bottom:1px solid #e2e8f0;padding-bottom:4px">Preview Title Youtube & Facebook (Judul Siaran Langsung)</div>
+<div style="background:#0f172a;color:#61b81c;font:600 12px/1.5 'Plus Jakarta Sans',sans-serif;padding:10px;border-radius:8px">🔴[ LIVE ] 12. RINGKASAN HADITS SHAHIH BUKHARI | Ustadz Muhammad Nadhirin Lc.</div>
+<button class="b" style="align-self:flex-start;height:30px;background:#549f17;color:#fff;border-color:#549f17">Salin Judul Standard</button>
+</div>
+<div class="c" style="padding:0;overflow:hidden;background:#88be5b">
+<div style="background:#0f172a;color:#fff;padding:12px 16px;font-size:12px;font-weight:700">Preview Caption: MASJID</div>
+<div style="padding:16px;display:flex;flex-direction:column;gap:12px">
+<div style="background:#f8faf5;border:1px solid #e2e8f0;border-radius:8px;padding:14px;font-size:12px;line-height:1.7;white-space:pre-line;height:300px;overflow:hidden">📡 (LIVE) Masjid Jami' Al Furqon
+Ma'had Al Furqon Al Islami, Srowo, Sidayu, Gresik - Jawa Timur
+
+📅 Ahad, 29 Rabiul Akhir 1448 H / 11 Oktober 2026 M
+🕣 18.00 ( Waktu Indonesia Barat ) - Selesai
+
+📚 Tema:
+Ringkasan Hadits Shahih Bukhari
+
+📚 Pembahasan Kitab:
+RINGKASAN HADITS SHAHIH BUKHARI (Pertemuan Ke-12)
+
+🎙️ Bersama:
+Ustadz Muhammad Nadhirin Lc. حَفِظَهُ اللهُ
+
+📺 Kajian dapat disaksikan melalui:
+🔴 Live YouTube: https://youtube.com/live/abc123</div>
+<div style="background:#fff7dd;border:2px solid #ddac17;border-radius:10px;padding:14px;display:flex;gap:12px;align-items:flex-start">
+<span style="width:24px;height:24px;border:2px solid #122104;border-radius:5px;background:#fff;flex:none;margin-top:2px"></span>
+<div><b style="font-size:15px">Tanggal Hijriah sudah saya periksa</b><div class="m" style="margin-top:4px;line-height:1.5">Tertulis: <b>29 Rabiul Akhir 1448 H</b>. Kajian setelah Maghrib? Geser +1. Cocokkan juga dengan kalender nasional. Centang untuk mengaktifkan tombol salin.</div></div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+<button class="b x" style="height:46px;font-size:13px">Polosan FB (terkunci)</button>
+<button class="b x" style="height:46px;font-size:13px">Salin Share WA (terkunci)</button>
+</div>
+</div>
+</div>
+<div style="display:flex;justify-content:space-between;align-items:center;gap:12px">
+<div class="m" style="max-width:360px">Tombol Selesai aktif setelah ada caption yang tersalin. Form dikosongkan dan kembali ke Home.</div>
+<button class="b x" style="height:48px;padding:0 24px;font-size:14px">Selesai & kembali ke Home</button>
+</div>
+</div>
+</div>
+</main>
+</div>
+
+
+</body>
+</html>

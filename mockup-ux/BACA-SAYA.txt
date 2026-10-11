@@ -1,0 +1,4 @@
+Mockup UX (statis, hanya tampilan). Buka dengan klik dua kali di browser:
+- home.html        : layar Home, pilih kategori
+- form-masjid.html : contoh form kategori Masjid (tombol salin terkunci)
+Tombol belum berfungsi. Mockup ini hanya untuk disepakati sebelum kode diubah.
