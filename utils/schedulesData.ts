@@ -11,7 +11,7 @@ export const MASTER_SCHEDULES: FixedSchedule[] = [
   // SABTU
   { hari: 'Sabtu', jam: '05.00', kitab: 'SIFAT SHOLAT NABI ﷻ', ustadz: 'Ustadz Abu Yahya Rohmanto, Lc.' },
   { hari: 'Sabtu', jam: '08.30', kitab: 'TAJWID', ustadz: 'Ustadz Dennis Manuputty, Lc.' },
-  { hari: 'Sabtu', jam: '13.00', kitab: 'MENDIDIK SI BUAH HATI', ustadz: 'Ustadz Iqbal Astar, Lc.' },
+  { hari: 'Sabtu', jam: '13.00', kitab: 'MENDIDIK SI BUAH HATI', ustadz: 'Ustadz Iqbal Astar, Lc., M.A.' },
   { hari: 'Sabtu', jam: '15.45', kitab: 'MUKHTASAR MINHAJUL QASHIDIN', ustadz: 'Ustadz Khoirul Fajar, Lc.' },
   { hari: 'Sabtu', jam: '18.00', kitab: '40 HADITS KEUTAMAAN AHLUL QUR\'AN', ustadz: 'Ustadz Dennis Manuputty Lc.' },
   { hari: 'Sabtu', jam: '18.00', kitab: 'TEGAR DI ATAS AQIDAH SALAF', ustadz: 'Ustadz Khoirul Fajar, Lc.' },
@@ -24,7 +24,6 @@ export const MASTER_SCHEDULES: FixedSchedule[] = [
   { hari: 'Ahad', jam: '20.00', kitab: '40 HADITS SEPUTAR MENIDIK ANAK', ustadz: 'Ustadz Fatih Mufarrikh, Lc., M.Pd.' },
 
   // SENIN
-  { hari: 'Senin', jam: '05.00', kitab: 'KEMULIAAN ADAB DAN AKHLAK', ustadz: 'Ustadz Taufiqurrahman, Lc.' },
   { hari: 'Senin', jam: '06.00', kitab: 'FIQH SIRAH NABI ﷻ', ustadz: 'Ustadz Sabilul Muhtadin, Lc., M.H.I.' },
   { hari: 'Senin', jam: '13.00', kitab: 'TARGHIB WA TARHIB', ustadz: 'Ustadz Anwar Samuri, Lc. M.A.' },
   { hari: 'Senin', jam: '15.45', kitab: 'PERJALANAN MANUSIA-MANUSIA TERBAIK', ustadz: 'Ustadz Muamar Sulaiman' },
@@ -49,7 +48,7 @@ export const MASTER_SCHEDULES: FixedSchedule[] = [
   // KAMIS
   { hari: 'Kamis', jam: '05.00', kitab: 'SENJATA SEORANG MUSLIM', ustadz: 'Ustadz Abu Harist Ainun Novi, Lc.' },
   { hari: 'Kamis', jam: '10.00', kitab: 'PELAJARAN PENTING BAGI WANITA MUSLIMAH', ustadz: 'Ustadz Anwari Ahmad' },
-  { hari: 'Kamis', jam: '13.00', kitab: 'PENYAKIT-PENYAKIT LISAN', ustadz: 'Ustadz Yahya Najaty, Lc.' },
+  { hari: 'Kamis', jam: '13.00', kitab: 'AL UBUDIYAH', ustadz: 'Ustadz Yahya Najaty, Lc.' },
   { hari: 'Kamis', jam: '15.45', kitab: 'INTISARI AQIDAH SALAF', ustadz: 'Ustadz Abu Faiz Sholahuddin' },
   { hari: 'Kamis', jam: '18.00', kitab: 'RISALAH AT TABUKIYAH IBNUL QOYYIM', ustadz: 'Ustadz Abu Rima, Lc.' },
   { hari: 'Kamis', jam: '18.00', kitab: 'TAFSIR AL-QUR\'AN SYEKH AS-SA\'ADI', ustadz: 'Ustadz Aunus Shofi' },
