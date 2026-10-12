@@ -25,7 +25,7 @@ export const MASTER_SCHEDULES: FixedSchedule[] = [
 
   // SENIN
   { hari: 'Senin', jam: '06.00', kitab: 'FIQH SIRAH NABI ﷻ', ustadz: 'Ustadz Sabilul Muhtadin, Lc., M.H.I.' },
-  { hari: 'Senin', jam: '13.00', kitab: 'TARGHIB WA TARHIB', ustadz: 'Ustadz Anwar Samuri, Lc. M.A.' },
+  { hari: 'Senin', jam: '13.00', kitab: 'TARGHIB WA TARHIB', ustadz: 'Ustadz Anwar Samuri, Lc., M.A.' },
   { hari: 'Senin', jam: '15.45', kitab: 'PERJALANAN MANUSIA-MANUSIA TERBAIK', ustadz: 'Ustadz Muamar Sulaiman' },
   { hari: 'Senin', jam: '18.00', kitab: 'PRAHARA DOSA BESAR', ustadz: 'Ustadz Rifaq Asyfiya\', Lc.' },
   { hari: 'Senin', jam: '20.00', kitab: 'BAGAIMANA ENGKAU MEMPERBAIKI HATI', ustadz: 'Ustadz Ahmad Zamroni' },

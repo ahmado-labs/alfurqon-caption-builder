@@ -207,7 +207,7 @@ export function CaptionForm({ kategori }: { kategori: CategoryKey }) {
   };
 
   // Otomatis kembali ke Home jika tidak ada aktivitas 30 menit (peringatan 60 detik sebelumnya)
-  const { sisaDetik, tetapDisini } = useIdleTimeout(() => router.push('/'), 30 * 60 * 1000);
+  const { sisaDetik, tetapDisini } = useIdleTimeout(() => router.push('/'), 60 * 60 * 1000);
 
   // Kembali ke Home dari header: konfirmasi jika form terisi dan belum ada yang disalin
   const handleKembali = () => {
